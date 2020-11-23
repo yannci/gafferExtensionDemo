@@ -57,6 +57,17 @@ class BendDeformer : public GafferScene::Deformer {
 	private:
 
 		static size_t g_firstPlugIndex;
+		/// Simple factory method that returns a Vector constructed from the passed values.
+		/// We need this factory method to bind the passed values differently to the arguments
+		/// since this is not possible with a constructor
+		Imath::V3f createPoint( float x, float y, float z ) const;
+		/// Computes the bended coordinates. We use this helper method instead of a direct implementation in
+		/// computeProcessedObject to bind the various coordinate values differently depending on the bend axis.
+		Imath::V3f computeBend( float staticP, float axisP, float perpP, float length ) const;
+
+		/// Used to map the different function bindings to the respective axis
+		std::map<BendAxis, std::pair< std::function<Imath::V3f(float, float, float, float)>,
+									  std::function<Imath::V3f(float, float, float)>>> axisMapping;
 };
 
 } // namespace DemoGafferExtension
