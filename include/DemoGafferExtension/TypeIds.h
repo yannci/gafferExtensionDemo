@@ -10,6 +10,7 @@ enum class TypeId
 	FirstTypeId = 120000,
 
 	DemoSceneProcessorTypeId = 120001,
+	BendDeformerTypeId = 120002,
 
 	LastTypeId = 120499,
 };

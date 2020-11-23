@@ -4,3 +4,4 @@ __import__( "GafferScene" )
 __import__( "GafferSceneUI" )
 
 import DemoSceneProcessorUI
+import BendDeformerUI
